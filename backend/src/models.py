@@ -5,7 +5,6 @@ from typing import Optional
 
 db = SQLAlchemy()
 
-
 class User(db.Model):
     __tablename__ = "users"
 
@@ -62,9 +61,10 @@ class Product(db.Model):
     menu_id: Mapped[int] = mapped_column(ForeignKey("menus.id"))
     name: Mapped[str]
     description: Mapped[str]
+    price: Mapped[str]
+    image: Mapped[str]
 
     menu = relationship("Menu", back_populates="products")
-    images = relationship("Image", back_populates="product")
 
 class Image(db.Model):
     __tablename__ = "imagenes"
